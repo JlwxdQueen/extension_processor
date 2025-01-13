@@ -8,13 +8,9 @@ void Processor::process() {
     extractFileExtensions();
 }
 
-const std::set<std::string>& Processor::getFileExtensions() const {
-    return fileExtensions;
-}
+const std::set<std::string> &Processor::getFileExtensions() const { return fileExtensions; }
 
-const std::vector<std::string>& Processor::getFileNames() const {
-    return fileNames;
-}
+const std::vector<std::string> &Processor::getFileNames() const { return fileNames; }
 
 void Processor::extractFileNames() {
     size_t start = 0, end;
@@ -40,7 +36,7 @@ void Processor::extractFileNames() {
 }
 
 void Processor::extractFileExtensions() {
-    for (const auto& fileName : fileNames) {
+    for (const auto &fileName: fileNames) {
         if (fileName.find('.') == std::string::npos || fileName[0] == '.') {
             continue;
         }

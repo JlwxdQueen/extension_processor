@@ -17,24 +17,27 @@ add_library(ProcessorLib STATIC
 add_executable(Processor src/main.cpp)
 target_link_libraries(Processor PRIVATE ProcessorLib)
 
-# Google Test
-include(FetchContent)
-FetchContent_Declare(
-        googletest
-        URL https://github.com/google/googletest/archive/refs/heads/main.zip
-)
+# Проверяем, нужен ли нам тестовый код
+if (EXISTS "${CMAKE_SOURCE_DIR}/tests/test_processor.cpp")
+    # Google Test
+    include(FetchContent)
+    FetchContent_Declare(
+            googletest
+            URL https://github.com/google/googletest/archive/refs/heads/main.zip
+    )
 
-# Подключение Google Test
-FetchContent_MakeAvailable(googletest)
+    # Подключение Google Test
+    FetchContent_MakeAvailable(googletest)
 
-# Включение тестирования
-enable_testing()
+    # Включение тестирования
+    enable_testing()
 
-# Добавление тестов
-add_executable(ProcessorTests tests/test_processor.cpp)
+    # Добавление тестов
+    add_executable(ProcessorTests tests/test_processor.cpp)
 
-# Линковка с Google Test и основной библиотекой
-target_link_libraries(ProcessorTests PRIVATE gtest gtest_main ProcessorLib)
+    # Линковка с Google Test и основной библиотекой
+    target_link_libraries(ProcessorTests PRIVATE gtest gtest_main ProcessorLib)
 
-# Регистрация тестов
-add_test(NAME ProcessorTests COMMAND ProcessorTests)
+    # Регистрация тестов
+    add_test(NAME ProcessorTests COMMAND ProcessorTests)
+endif ()

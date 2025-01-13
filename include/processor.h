@@ -1,8 +1,8 @@
 #ifndef PROCESSOR_H
 #define PROCESSOR_H
 
-#include <string>
 #include <set>
+#include <string>
 #include <vector>
 
 class Processor {
@@ -14,8 +14,8 @@ public:
     explicit Processor(std::string input);
     void process();
 
-    [[nodiscard]] const std::set<std::string>& getFileExtensions() const;
-    [[nodiscard]] const std::vector<std::string>& getFileNames() const;
+    [[nodiscard]] const std::set<std::string> &getFileExtensions() const;
+    [[nodiscard]] const std::vector<std::string> &getFileNames() const;
 
 private:
     void extractFileNames();

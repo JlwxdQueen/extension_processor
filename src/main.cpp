@@ -8,12 +8,12 @@ int main() {
     processor.process();
 
     std::cout << "File Names:" << std::endl;
-    for (const auto& name : processor.getFileNames()) {
+    for (const auto &name: processor.getFileNames()) {
         std::cout << " - " << name << '\n';
     }
 
     std::cout << "File Extensions:" << std::endl;
-    for (const auto& ext : processor.getFileExtensions()) {
+    for (const auto &ext: processor.getFileExtensions()) {
         std::cout << " - " << ext << '\n';
     }
 

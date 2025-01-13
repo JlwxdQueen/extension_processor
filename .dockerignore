@@ -1,0 +1,7 @@
+cmake-build-debug/
+.clang-format
+.clang-tidy
+.gitignore
+.gitattributes
+.git/
+tests/

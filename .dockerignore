@@ -1,7 +1,12 @@
 cmake-build-debug/
+.idea/
+
 .clang-format
 .clang-tidy
+
+.git/
 .gitignore
 .gitattributes
-.git/
-tests/
+
+README.md
+Docker.md

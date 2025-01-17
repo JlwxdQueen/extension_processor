@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 
 # Название проекта
-project(ProcessorProject LANGUAGES CXX)
+project(Extension_Processor LANGUAGES CXX)
 
 # Установка стандарта C++
 set(CMAKE_CXX_STANDARD 20)

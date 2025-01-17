@@ -1,27 +1,23 @@
-FROM alpine:3.18 AS development
+FROM alpine:3.18 AS builder
 
-RUN apk update && apk add --no-cache \
-    build-base \
-    cmake \
-    git \
-    wget \
-    && rm -rf /var/cache/apk/*
+RUN apk update && apk add --no-cache build-base cmake git zip && rm -rf /var/cache/apk/*
 
 WORKDIR /app
 
-COPY . .
+COPY CMakeLists.txt .
+COPY include ./include
+COPY src ./src
+COPY tests ./tests
 
-RUN cmake -S . -B build && cmake --build build
-RUN cd build && ctest --output-on-failure
+RUN mkdir build
+RUN cmake -DCMAKE_BUILD_TYPE=Release -S . -B build && cmake --build build
 
 FROM alpine:3.18 AS production
 
-RUN apk update && apk add --no-cache \
-    libstdc++ \
-    && rm -rf /var/cache/apk/*
+RUN apk update && apk add --no-cache libstdc++ && rm -rf /var/cache/apk/*
 
 WORKDIR /app
 
-COPY --from=development /app/build/Processor /app/Processor
+COPY --from=builder /app/build/Processor /app/Processor
 
 CMD ["./Processor"]

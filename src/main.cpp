@@ -3,7 +3,11 @@
 #include "../include/processor.h"
 
 int main() {
-    const std::string input = "dir1/file1.txt;LICENSE;.gitignore;dir2/file2.jpg;README;dir3/subdir/.hiddenfile;";
+    std::string input;
+
+    std::cout << "Input the string in format: path_to_file1;path_to_file2;path_to_file3; ... ;" << std::endl;
+
+    std::getline(std::cin, input);
     Processor processor(input);
     processor.process();
 

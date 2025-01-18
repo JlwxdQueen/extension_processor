@@ -9,8 +9,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Основная библиотека
 add_library(ProcessorLib STATIC
+        include/processor.hpp
         src/processor.cpp
-        include/processor.h
+
+        src/generator/gitattributes_generator.hpp
+        src/generator/gitattributes_generator.cpp
 )
 
 # Основной исполняемый файл

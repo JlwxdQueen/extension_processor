@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 #include <iostream>
-#include "../include/processor.h"
+
+#include "../include/processor.hpp"
 
 // Тест для проверки обработки входных данных
 TEST(ProcessorTests, ProcessInput) {
@@ -10,9 +11,8 @@ TEST(ProcessorTests, ProcessInput) {
 
     // Проверяем корректность извлечения имен файлов
     const auto &fileNames = processor.getFileNames();
-    const std::vector<std::string> expectedFileNames = {
-        "file1.txt", "LICENSE", ".gitignore", "file2.jpg", "README", ".hiddenfile"
-    };
+    const std::vector<std::string> expectedFileNames = {"file1.txt", "LICENSE", ".gitignore",
+                                                        "file2.jpg", "README",  ".hiddenfile"};
     EXPECT_EQ(fileNames, expectedFileNames);
 
     // Проверяем корректность извлечения расширений файлов

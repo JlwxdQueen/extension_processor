@@ -1,5 +1,6 @@
-#include "../include/processor.h"
 #include <utility>
+
+#include "../include/processor.hpp"
 
 Processor::Processor(std::string input) : input(std::move(input)) {}
 
